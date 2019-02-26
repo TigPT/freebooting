@@ -54,3 +54,25 @@ resource "cloudflare_record" "SPF" {
   value   = "v=spf1 include:amazonses.com ip4:${var.vps_ip} ip6:${var.vps_ipv6} ~all"
   type    = "TXT"
 }
+
+# DKIM AWS SES
+resource "cloudflare_record" "DKIM_SES_ONE" {
+  domain  = "${var.domain}"
+  name    = "ewbpfzwtbpxjwrkonq22rtc76gahaxg5._domainkey.freebooting.me"
+  value   = "ewbpfzwtbpxjwrkonq22rtc76gahaxg5.dkim.amazonses.com"
+  type    = "CNAME"
+}
+
+resource "cloudflare_record" "DKIM_SES_TWO" {
+  domain  = "${var.domain}"
+  name    = "xqhdyxiyslfu4nqtxf37gormrhplqe4x._domainkey.freebooting.me"
+  value   = "xqhdyxiyslfu4nqtxf37gormrhplqe4x.dkim.amazonses.com"
+  type    = "CNAME"
+}
+
+resource "cloudflare_record" "DKIM_SES_THREE" {
+  domain  = "${var.domain}"
+  name    = "rloc4fplgx3ykgdsdv5ao3detx3325nz._domainkey.freebooting.me"
+  value   = "rloc4fplgx3ykgdsdv5ao3detx3325nz.dkim.amazonses.com"
+  type    = "CNAME"
+}
